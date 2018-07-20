@@ -78,6 +78,12 @@ Private Sub Text1_KeyPress(KeyAscii As Integer)
 End Sub
 
 Private Sub Form_Load()
+
+    Principal.WindowState = 2
+    
+    WebBrowser1.Width = Screen.Width
+    WebBrowser1.Height = Screen.Width
+      
     If Command$ <> "" Then
         WebBrowser1.Navigate (Command$)
         Text1.Text = Command$
