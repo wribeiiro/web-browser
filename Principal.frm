@@ -10,6 +10,22 @@ Begin VB.Form Principal
    ScaleHeight     =   9075
    ScaleWidth      =   15495
    StartUpPosition =   2  'CenterScreen
+   Begin VB.CommandButton Command3 
+      Caption         =   "&Avançar"
+      Height          =   495
+      Left            =   960
+      TabIndex        =   4
+      Top             =   240
+      Width           =   735
+   End
+   Begin VB.CommandButton Command2 
+      Caption         =   "&Voltar"
+      Height          =   495
+      Left            =   120
+      TabIndex        =   3
+      Top             =   240
+      Width           =   735
+   End
    Begin SHDocVwCtl.WebBrowser WebBrowser1 
       Height          =   8175
       Left            =   120
@@ -54,11 +70,11 @@ Begin VB.Form Principal
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   120
+      Left            =   1800
       TabIndex        =   0
       Text            =   "http://www.google.com"
       Top             =   240
-      Width           =   14175
+      Width           =   12495
    End
 End
 Attribute VB_Name = "Principal"
@@ -70,8 +86,15 @@ Private Sub Command1_Click()
     WebBrowser1.Navigate (Text1.Text)
 End Sub
 
+Private Sub Command2_Click()
+    WebBrowser1.GoBack
+End Sub
+
+Private Sub Command3_Click()
+    WebBrowser1.GoForward
+End Sub
+
 Private Sub Text1_KeyPress(KeyAscii As Integer)
- 
     If KeyAscii = vbKeyReturn Then
         WebBrowser1.Navigate (Text1.Text)
     End If
@@ -80,9 +103,9 @@ End Sub
 Private Sub Form_Load()
 
     Principal.WindowState = 2
-    
+
     WebBrowser1.Width = Screen.Width
-    WebBrowser1.Height = Screen.Width
+    WebBrowser1.Height = Screen.Height
       
     If Command$ <> "" Then
         WebBrowser1.Navigate (Command$)
